@@ -32,6 +32,40 @@ class QuickInfoCell: UITableViewCell {
         //First Call Super
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        // Add header, description and image to the  cell.
+        self.contentView.addSubview(imgView)
+        imgView.snp.makeConstraints { (make) -> Void in
+            make.width.height.equalTo(80)
+            make.left.equalTo(10)
+            make.top.equalTo(self.contentView).offset(10)
+            //            make.bottom.greaterThanOrEqualTo(10).priority(999)
+        }
+        
+        self.contentView.addSubview(lblHeader)
+        lblHeader.textColor = .gray
+        
+        lblHeader.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(imgView.snp.right).offset(10)
+            make.top.equalTo(self.contentView).offset(10)
+            make.right.equalTo(self.contentView).offset(10)
+        }
+        
+        lblDescription.numberOfLines = 0
+        lblDescription.lineBreakMode = .byWordWrapping
+        lblDescription.clipsToBounds = true
+        lblDescription.textColor = .lightGray
+        
+        self.contentView.addSubview(lblDescription)
+        
+        lblDescription.snp.makeConstraints { (make) -> Void in
+            make.left.right.equalTo(lblHeader)
+            make.top.equalTo(lblHeader.snp.bottom).offset(10)
+            make.bottom.equalTo(self.contentView).offset(-10)
+            //            make.bottom.greaterThanOrEqualTo(10).priority(998)
+        }
+        
+        self.contentView.backgroundColor = .white
+        
     }
     
     ///------------
