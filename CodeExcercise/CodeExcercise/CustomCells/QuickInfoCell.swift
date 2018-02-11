@@ -11,6 +11,13 @@ import UIKit
 
 class QuickInfoCell: UITableViewCell {
     
+    // MARK: Properties
+    var lblHeader : UILabel = UILabel()
+    var lblDescription : UILabel = UILabel()
+    var imgView : UIImageView = UIImageView()
+    
+    // MARK: Setup Methods
+    
     //-----------------
     // MARK: VIEW FUNCTIONS
     //-----------------
@@ -36,6 +43,17 @@ class QuickInfoCell: UITableViewCell {
     {
         //Just Call Super
         super.init(coder: aDecoder)
+    }
+    
+    ///------------
+    //Method: Setup cell with InformationSummary
+    //Purpose:
+    //Notes: This function is called when the cells are created to set data on the cell using the passed info object.
+    ///------------
+    func setupWithInformation(info:InformationSummary){
+        // Configure image, title and description.
+        lblHeader.text = info.title
+        lblDescription.text = info.description
     }
     
 }

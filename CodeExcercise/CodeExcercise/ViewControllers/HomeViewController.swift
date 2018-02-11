@@ -19,6 +19,14 @@ class HomeViewController: UIViewController {
     // MARK: Properties
     var tableView: UITableView!
     
+    var results = [InformationSummary]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
     // MARK: ViewController Setup
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +80,42 @@ class HomeViewController: UIViewController {
     fileprivate func registercells(){
         tableView.register(QuickInfoCell.self, forCellReuseIdentifier: "infoCell")
         tableView.estimatedRowHeight = 100
+    }
+}
+
+// MARK: UITableViewDataSource
+
+extension HomeViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return results.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as!QuickInfoCell
+        cell.setupWithInformation(info: results[indexPath.row])
+        return cell
+    }
+}
+
+// MARK: UITableViewDelegate
+
+extension HomeViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        // We will create auto reszing cells and accomodate contents accordingly.
+        return UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
