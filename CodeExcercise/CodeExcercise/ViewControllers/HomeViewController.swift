@@ -35,7 +35,9 @@ class HomeViewController: UIViewController {
         tableView.dg_removePullToRefresh()
     }
     
-    // MARK: View Setup
+    //----------------------------
+    // MARK: VIEW SETUP FUCNTIONS
+    //----------------------------
     fileprivate func configureView(){
         
         // Setting background color of the navigationBar
@@ -62,6 +64,14 @@ class HomeViewController: UIViewController {
             }, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(pullToRefreshFillBgColor)
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+        
+        // Register custom cells for table view.
+        registercells()
+    }
+    
+    fileprivate func registercells(){
+        tableView.register(QuickInfoCell.self, forCellReuseIdentifier: "infoCell")
+        tableView.estimatedRowHeight = 100
     }
 }
 
