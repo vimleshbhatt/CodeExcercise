@@ -16,6 +16,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Create a window and the initial view controller to show in the window.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        // Create a navigationController with our homeViewController and make the navigationController as the rootViewController of the window.
+        let homeViewController = HomeViewController() as UIViewController
+        homeViewController.view.backgroundColor = .white
+        let navigationController = UINavigationController(rootViewController: homeViewController)
+        navigationController.navigationBar.isTranslucent = false
+        window!.rootViewController = homeViewController
+        self.window?.rootViewController = navigationController
+        
+        // Make the controller visible on the window.
+        window!.makeKeyAndVisible()
+        
         return true
     }
 
