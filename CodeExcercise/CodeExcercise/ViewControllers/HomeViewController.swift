@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import DGElasticPullToRefresh
+import SnapKit
 
 let pullToRefreshFillBgColor = UIColor(red: 247/255.0, green: 180/255.0, blue: 68/255.0, alpha: 1.0)
 let pullToRefreshLoadingIndicatorTintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
@@ -44,6 +45,12 @@ class HomeViewController: UIViewController {
         tableView = UITableView(frame: self.view.frame, style: .grouped)
         tableView.backgroundColor = .clear
         self.view.addSubview(tableView!)
+        
+        // Add constraints to the table and align it to the center of the view.
+        tableView.snp.makeConstraints { (make) -> Void in
+            make.top.left.right.bottom.equalTo(0)
+            make.center.equalTo(self.view)
+        }
         
         // Add the Pull to refresh control.
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
