@@ -45,7 +45,7 @@ class QuickInfoCell: UITableViewCell {
         }
         
         self.contentView.addSubview(lblHeader)
-        lblHeader.textColor = .gray
+        lblHeader.textColor = .black
         
         lblHeader.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(imgView.snp.right).offset(10)

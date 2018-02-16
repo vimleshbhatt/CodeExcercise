@@ -44,11 +44,10 @@ extension UIImageView{
         }
         
         Alamofire.request(imageUrlString!).responseImage { response in
+            activityIndicator.stopAnimating()
             if let image = response.result.value {
-                activityIndicator.stopAnimating()
                 self.image = image
             }else{
-                activityIndicator.stopAnimating()
                 self.image = self.getPlaceholderImage()
             }
         }

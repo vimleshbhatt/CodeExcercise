@@ -209,6 +209,9 @@ extension HomeViewController{
             do {
                 let response = try JSONSerialization.jsonObject(with: modifiedDataInUTF8Format) as? [String: AnyObject]
                 // Get the results array
+                let title = response?["title"] ?? "Information" as AnyObject
+                updateNavigationTitle(title: title as! String)
+                
                 if let array: AnyObject = response?["rows"] {
                     for infoDictionary in array as! [AnyObject]{
                         // Parse the search result into appropriate InformationSummary business model.
@@ -231,6 +234,12 @@ extension HomeViewController{
             self.tableView.reloadData()
             Toast.showPositiveMessage(message: "Updating information")
             self.tableView.setContentOffset(CGPoint.zero, animated: false)
+        }
+    }
+    
+    func updateNavigationTitle(title: String) {
+        DispatchQueue.main.async {
+            self.navigationItem.title = title
         }
     }
 }
