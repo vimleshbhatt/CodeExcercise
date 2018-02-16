@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import DGElasticPullToRefresh
 import SnapKit
 
 let pullToRefreshFillBgColor = UIColor(red: 247/255.0, green: 180/255.0, blue: 68/255.0, alpha: 1.0)
@@ -59,7 +58,7 @@ class HomeViewController: UIViewController {
     }
     
     deinit {
-        tableView.dg_removePullToRefresh()
+        
     }
     
     /**
@@ -85,22 +84,10 @@ class HomeViewController: UIViewController {
             make.center.equalTo(self.view)
         }
         
-        // Add the Pull to refresh control.
-        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        loadingView.tintColor = pullToRefreshLoadingIndicatorTintColor
-        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(1.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: {
-                self?.tableView.dg_stopLoading()
-                self?.fetchDetails()
-            })
-            }, loadingView: loadingView)
-        tableView.dg_setPullToRefreshFillColor(pullToRefreshFillBgColor)
-        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
-        
         // Register custom cells for table view.
         registercells()
     }
-    
+
     fileprivate func registercells(){
         tableView.register(QuickInfoCell.self, forCellReuseIdentifier: "infoCell")
         tableView.estimatedRowHeight = 100
