@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import SnapKit
+import Refresher
 
 let pullToRefreshFillBgColor = UIColor(red: 247/255.0, green: 180/255.0, blue: 68/255.0, alpha: 1.0)
 let pullToRefreshLoadingIndicatorTintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
@@ -82,6 +83,16 @@ class HomeViewController: UIViewController {
         tableView.snp.makeConstraints { (make) -> Void in
             make.top.left.right.bottom.equalTo(0)
             make.center.equalTo(self.view)
+        }
+        
+        tableView.addPullToRefreshWithAction {
+            OperationQueue().addOperation {
+                sleep(2)
+                OperationQueue.main.addOperation {
+                    self.tableView.stopPullToRefresh()
+                    self.fetchDetails()
+                }
+            }
         }
         
         // Register custom cells for table view.
