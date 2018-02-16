@@ -27,6 +27,7 @@
 		C1ACE35A2030E94800DE38E1 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ACE3592030E94800DE38E1 /* ImageDownloader.swift */; };
 		C1ACE35B2030E94800DE38E1 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ACE3592030E94800DE38E1 /* ImageDownloader.swift */; };
 		C1ACE35C2030E94800DE38E1 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ACE3592030E94800DE38E1 /* ImageDownloader.swift */; };
+		C1F263082032EAFB006FA40D /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F263072032EAFB006FA40D /* ToastMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		C1ACE3512030D98E00DE38E1 /* InformationSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationSummary.swift; sourceTree = "<group>"; };
 		C1ACE3552030DB1E00DE38E1 /* QuickInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickInfoCell.swift; sourceTree = "<group>"; };
 		C1ACE3592030E94800DE38E1 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		C1F263072032EAFB006FA40D /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		F3335F77BD11E9A3F1747E77 /* Pods_CodeExcercise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CodeExcercise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -197,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				C1ACE3592030E94800DE38E1 /* ImageDownloader.swift */,
+				C1F263072032EAFB006FA40D /* ToastMessage.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C17B39D62030D0DC006246C6 /* AppDelegate.swift in Sources */,
+				C1F263082032EAFB006FA40D /* ToastMessage.swift in Sources */,
 				C1ACE35A2030E94800DE38E1 /* ImageDownloader.swift in Sources */,
 				C1ACE3522030D98E00DE38E1 /* InformationSummary.swift in Sources */,
 				C1ACE34E2030D44A00DE38E1 /* HomeViewController.swift in Sources */,

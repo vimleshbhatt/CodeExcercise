@@ -11,8 +11,19 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
+/**
+ * A sample class demonstrating good Objective-C style. All interfaces,
+ * categories, and protocols (read: all non-trivial top-level declarations
+ * in a header) MUST be commented. Comments must also be adjacent to the
+ * object they're documenting.
+ */
 extension UIImageView{
     
+    /**
+     * Class method to download an image from a remote server.
+     * @param imageUrlString The string path for the image to download.
+     *
+     */
     public func imageWithUrl(imageUrlString: String?){
         
         // Adding an progress indicator on the imageview to update the progress of the downloading image.
@@ -45,7 +56,12 @@ extension UIImageView{
         }
     }
     
-    func getPlaceholderImage()->UIImage{
+    /**
+     * Class method to return a placeholder image in-case the image is not downloaded from the server.
+     * @param imageUrlString The string path for the image to download.
+     *
+     */
+    fileprivate func getPlaceholderImage()->UIImage{
         return UIImage(imageLiteralResourceName: "placeholder")
     }
 }

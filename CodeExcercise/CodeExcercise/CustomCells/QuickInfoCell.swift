@@ -9,11 +9,20 @@
 import Foundation
 import UIKit
 
+/**
+ * A UITableViewCell cell class which creates and returns a cell for reuse.
+ *
+ *
+ */
 class QuickInfoCell: UITableViewCell {
     
-    // MARK: Properties
+    /** The label to display the header on the cell. */
     var lblHeader : UILabel = UILabel()
+    
+    /** The label to display the description on the cell. */
     var lblDescription : UILabel = UILabel()
+    
+    /** The imageView on which the image will be downloaded and set. */
     var imgView : UIImageView = UIImageView()
     
     // MARK: Setup Methods
@@ -47,7 +56,7 @@ class QuickInfoCell: UITableViewCell {
         lblHeader.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(imgView.snp.right).offset(10)
             make.top.equalTo(self.contentView).offset(10)
-            make.right.equalTo(self.contentView).offset(10)
+            make.right.equalTo(self.contentView).offset(20)
         }
         
         lblDescription.numberOfLines = 0
@@ -88,6 +97,7 @@ class QuickInfoCell: UITableViewCell {
         // Configure image, title and description.
         lblHeader.text = info.title
         lblDescription.text = info.description
+        imgView.imageWithUrl(imageUrlString: info.imageRef)
     }
     
 }

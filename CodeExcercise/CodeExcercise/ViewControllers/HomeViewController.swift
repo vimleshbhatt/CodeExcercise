@@ -14,11 +14,16 @@ import SnapKit
 let pullToRefreshFillBgColor = UIColor(red: 247/255.0, green: 180/255.0, blue: 68/255.0, alpha: 1.0)
 let pullToRefreshLoadingIndicatorTintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
 
+/**
+ * A class which manages the components on the HomeViewController.
+ 
+ */
 class HomeViewController: UIViewController {
     
-    // MARK: Properties
+    /** The table which will display the information on its view. */
     var tableView: UITableView!
     
+    /** The colelction will hold InformationSummary mode objects and will be used to populate data on the table. */
     var results = [InformationSummary]() {
         didSet {
             DispatchQueue.main.async {
@@ -27,17 +32,21 @@ class HomeViewController: UIViewController {
         }
     }
     
-    // Will use the URLSessionDataTask to fetch the information from remote server.
+    /** Instance variable used to make service call and fetch data from server. */
     var dataTask: URLSessionDataTask?
     
-    // Session to make the API call,
+    /** Instance variable for the session created to fetch data from server. */
     lazy var dataSession: URLSession = {
         let configuration = URLSessionConfiguration.default
         let session = URLSession(configuration: configuration, delegate: self as? URLSessionDelegate, delegateQueue: nil)
         return session
     }()
     
-    // MARK: ViewController Setup
+    /**
+     * View controller life cycle's method used to configure conponents added to the view.
+     * Method will be called once the view is loaded into memory and any custom configuration could be done here.
+     *
+     */
     override public func viewDidLoad() {
         super.viewDidLoad()
         
@@ -138,10 +147,14 @@ extension HomeViewController: UITableViewDelegate {
 extension HomeViewController{
     
     func fetchDetails(){
+        
+        Toast.showPositiveMessage(message: "Fetching information")
+        
         // Cancel is initiated for the task.
         if dataTask != nil {
             dataTask?.cancel()
         }
+        
         // Start the network activity indicator to show the progress.
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
@@ -158,6 +171,7 @@ extension HomeViewController{
             // Vheck for error and print the localized description for the same.
             if let error = error {
                 print(error.localizedDescription)
+                Toast.showNegativeMessage(message: "Could not display information now.")
             } else if let httpResponse = response as? HTTPURLResponse {
                 if httpResponse.statusCode == 200 {
                     self.updateSearchResults(data)
@@ -173,14 +187,19 @@ extension HomeViewController{
     
     // This helper method helps parse response JSON NSData into an array of InformationSummary objects.
     func updateSearchResults(_ data: Data?) {
+        Toast.showPositiveMessage(message: "Parsing information")
         results.removeAll()
         do {
             
-            if let data = data, let response = try JSONSerialization.jsonObject(with: data, options:JSONSerialization.ReadingOptions.mutableContainers) as? [String: AnyObject] {
-                
+            let responseStrInISOLatin = String(data: data!, encoding: String.Encoding.isoLatin1)
+            guard let modifiedDataInUTF8Format = responseStrInISOLatin?.data(using: String.Encoding.utf8) else {
+                print("could not convert data to UTF-8 format")
+                return
+            }
+            do {
+                let response = try JSONSerialization.jsonObject(with: modifiedDataInUTF8Format) as? [String: AnyObject]
                 // Get the results array
-                if let array: AnyObject = response["rows"] {
-                    
+                if let array: AnyObject = response?["rows"] {
                     for infoDictionary in array as! [AnyObject]{
                         // Parse the search result into appropriate InformationSummary business model.
                         let title = infoDictionary["title"] as? String
@@ -190,16 +209,17 @@ extension HomeViewController{
                     }
                 } else {
                     print("Key not found in dictionary")
+                    Toast.showNegativeMessage(message: "Could not load at this time.")
                 }
-            } else {
-                print("JSON Error")
+            } catch {
+                print("Error parsing results: \(error.localizedDescription)")
+                Toast.showNegativeMessage(message: "Issue with loading data")
             }
-        } catch let error as NSError {
-            print("Error parsing results: \(error.localizedDescription)")
         }
         
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            Toast.showPositiveMessage(message: "Updating information")
             self.tableView.setContentOffset(CGPoint.zero, animated: false)
         }
     }
