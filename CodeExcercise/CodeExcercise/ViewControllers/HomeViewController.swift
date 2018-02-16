@@ -62,9 +62,11 @@ class HomeViewController: UIViewController {
         tableView.dg_removePullToRefresh()
     }
     
-    //----------------------------
-    // MARK: VIEW SETUP FUCNTIONS
-    //----------------------------
+    /**
+     * Method will configure the table by adding constraints and other appropriate properties to it. Also it will add the pull to refresh functionality to the table.
+     * @param data : None
+     *
+     */
     fileprivate func configureView(){
         
         // Setting background color of the navigationBar
@@ -133,6 +135,7 @@ extension HomeViewController: UITableViewDataSource {
 // MARK: UITableViewDelegate
 
 extension HomeViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         // We will create auto reszing cells and accomodate contents accordingly.
         return UITableViewAutomaticDimension
@@ -146,7 +149,11 @@ extension HomeViewController: UITableViewDelegate {
 
 extension HomeViewController{
     
-    func fetchDetails(){
+    /**
+     * Method will use the session to initiate the data task and fetch the response from the server.
+     *
+     */
+    func fetchDetails() {
         
         Toast.showPositiveMessage(message: "Fetching information")
         
@@ -168,7 +175,7 @@ extension HomeViewController{
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
             
-            // Vheck for error and print the localized description for the same.
+            // Check for error and print the localized description for the same.
             if let error = error {
                 print(error.localizedDescription)
                 Toast.showNegativeMessage(message: "Could not display information now.")
@@ -182,10 +189,13 @@ extension HomeViewController{
         // Start the task
         dataTask?.resume()
     }
-    
-    // MARK: Handling Results
-    
-    // This helper method helps parse response JSON NSData into an array of InformationSummary objects.
+
+    /**
+     * Method will help parse the received data into appropriate business object.
+     * This helper method helps parse response JSON NSData into an array of InformationSummary objects.
+     *@param data : Data received from remote server.
+     *
+     */
     func updateSearchResults(_ data: Data?) {
         Toast.showPositiveMessage(message: "Parsing information")
         results.removeAll()

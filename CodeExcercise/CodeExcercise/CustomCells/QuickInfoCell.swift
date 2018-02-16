@@ -12,8 +12,8 @@ import UIKit
 /**
  * A UITableViewCell cell class which creates and returns a cell for reuse.
  *
- *
  */
+
 class QuickInfoCell: UITableViewCell {
     
     /** The label to display the header on the cell. */
@@ -25,20 +25,15 @@ class QuickInfoCell: UITableViewCell {
     /** The imageView on which the image will be downloaded and set. */
     var imgView : UIImageView = UIImageView()
     
-    // MARK: Setup Methods
-    
-    //-----------------
-    // MARK: VIEW FUNCTIONS
-    //-----------------
-    
-    ///------------
-    //Method: Init with Style
-    //Purpose:
-    //Notes: This will NOT get called unless you call "registerClass, forCellReuseIdentifier" on your tableview
-    ///------------
-    override init(style: UITableViewCellStyle, reuseIdentifier: String!)
-    {
-        //First Call Super
+    /**
+     * Initialization method.
+     * This will NOT get called unless you call "registerClass, forCellReuseIdentifier" on your tableview.
+     *
+     * @param style The style used for the cell.
+     * @param reuseIdentifier The reusable identifier which is registered with the class.
+     *
+     */
+    override init(style: UITableViewCellStyle, reuseIdentifier: String!) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         // Add header, description and image to the  cell.
@@ -47,7 +42,6 @@ class QuickInfoCell: UITableViewCell {
             make.width.height.equalTo(80)
             make.left.equalTo(10)
             make.top.equalTo(self.contentView).offset(10)
-            //            make.bottom.greaterThanOrEqualTo(10).priority(999)
         }
         
         self.contentView.addSubview(lblHeader)
@@ -56,7 +50,7 @@ class QuickInfoCell: UITableViewCell {
         lblHeader.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(imgView.snp.right).offset(10)
             make.top.equalTo(self.contentView).offset(10)
-            make.right.equalTo(self.contentView).offset(20)
+            make.right.equalTo(self.contentView).offset(-10)
         }
         
         lblDescription.numberOfLines = 0
@@ -70,34 +64,31 @@ class QuickInfoCell: UITableViewCell {
             make.left.right.equalTo(lblHeader)
             make.top.equalTo(lblHeader.snp.bottom).offset(10)
             make.bottom.equalTo(self.contentView).offset(-10)
-            //            make.bottom.greaterThanOrEqualTo(10).priority(998)
         }
         
         self.contentView.backgroundColor = .white
-        
     }
     
-    ///------------
-    //Method: Init with Coder
-    //Purpose:
-    //Notes: This function is apparently required; gets called by default if you don't call "registerClass, forCellReuseIdentifier" on your tableview
-    ///------------
-    required init?(coder aDecoder: NSCoder)
-    {
-        //Just Call Super
+    /**
+     * Required initializer method
+     * This function is apparently required; gets called by default if you don't call "registerClass, forCellReuseIdentifier" on your tableview
+     *
+     */
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    ///------------
-    //Method: Setup cell with InformationSummary
-    //Purpose:
-    //Notes: This function is called when the cells are created to set data on the cell using the passed info object.
-    ///------------
-    func setupWithInformation(info:InformationSummary){
+    /**
+     * Configuration or Setup method for the cell.
+     * This function is called when the cells are created to set data on the cell using the passed info object.
+     *
+     * @param info The InformationSummary model object to be used for populating the data on the cell.
+     *
+     */
+    func setupWithInformation(info:InformationSummary) {
         // Configure image, title and description.
         lblHeader.text = info.title
         lblDescription.text = info.description
         imgView.imageWithUrl(imageUrlString: info.imageRef)
     }
-    
 }

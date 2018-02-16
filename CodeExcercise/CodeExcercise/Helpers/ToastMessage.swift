@@ -15,7 +15,7 @@ import UIKit
  */
 class Toast {
     
-    class private func showAlert(backgroundColor:UIColor, textColor:UIColor, message:String){
+    class private func showAlert(backgroundColor:UIColor, textColor:UIColor, message:String) {
         DispatchQueue.main.async {
             let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
             let label = UILabel(frame: CGRect.zero)
@@ -61,7 +61,7 @@ class Toast {
      * @param message The messsage to be displayed.
      *
      */
-    class func showPositiveMessage(message:String){
+    class func showPositiveMessage(message:String) {
         showAlert(backgroundColor: UIColor.green, textColor: UIColor.white, message: message)
     }
     
@@ -70,7 +70,7 @@ class Toast {
      * @param message The messsage to be displayed.
      *
      */
-    class func showNegativeMessage(message:String){
+    class func showNegativeMessage(message:String) {
         showAlert(backgroundColor: UIColor.red, textColor: UIColor.white, message: message)
     }
 }

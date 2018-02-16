@@ -14,7 +14,8 @@ import Foundation
  * in a header) MUST be commented. Comments must also be adjacent to the
  * object they're documenting.
  */
-class InformationSummary{
+
+class InformationSummary {
     
     /** The retained Bar. */
     var title:String?
