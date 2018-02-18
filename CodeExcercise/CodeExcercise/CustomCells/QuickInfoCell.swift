@@ -33,37 +33,50 @@ class QuickInfoCell: UITableViewCell {
      * @param reuseIdentifier The reusable identifier which is registered with the class.
      *
      */
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String!) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        let marginGuide = contentView.layoutMarginsGuide
+        
         // Add header, description and image to the  cell.
-        self.contentView.addSubview(imgView)
-        imgView.snp.makeConstraints { (make) -> Void in
-            make.width.height.equalTo(80)
-            make.left.equalTo(10)
-            make.top.equalTo(self.contentView).offset(10)
-        }
-        
         self.contentView.addSubview(lblHeader)
-        lblHeader.textColor = .black
+        self.contentView.addSubview(lblDescription)
+        self.contentView.addSubview(imgView)
         
+        lblHeader.textColor = .black
+        lblHeader.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Configure Title
         lblHeader.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(imgView.snp.right).offset(10)
-            make.top.equalTo(self.contentView).offset(10)
-            make.right.equalTo(self.contentView).offset(-10)
+            make.top.equalTo(marginGuide.snp.top)
+            make.right.equalTo(marginGuide.snp.right)
+        }
+        lblHeader.numberOfLines = 0
+        lblHeader.font = UIFont(name: "AvenirNext-DemiBold", size: 16)
+
+        // Configure Description
+        lblDescription.textColor = .lightGray
+        lblDescription.translatesAutoresizingMaskIntoConstraints = false
+        lblDescription.numberOfLines = 0
+        lblDescription.font = UIFont(name: "Avenir-Book", size: 12)
+        lblDescription.textColor = UIColor.lightGray
+        lblDescription.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(lblHeader.snp.left)
+            make.top.equalTo(lblHeader.snp.bottom)
+            make.right.equalTo(marginGuide.snp.right)
+            make.bottom.equalTo(marginGuide.snp.bottom)
         }
         
-        lblDescription.numberOfLines = 0
-        lblDescription.lineBreakMode = .byWordWrapping
-        lblDescription.clipsToBounds = true
-        lblDescription.textColor = .lightGray
+        imgView.contentMode = .scaleAspectFit
+        imgView.clipsToBounds = true
         
-        self.contentView.addSubview(lblDescription)
-        
-        lblDescription.snp.makeConstraints { (make) -> Void in
-            make.left.right.equalTo(lblHeader)
-            make.top.equalTo(lblHeader.snp.bottom).offset(10)
-            make.bottom.equalTo(self.contentView).offset(-10)
+        imgView.snp.makeConstraints { (make) -> Void in
+            make.width.height.equalTo(60)
+            make.left.equalTo(marginGuide.snp.left)
+            make.top.equalTo(marginGuide.snp.top)
+            make.bottom.equalTo(marginGuide.snp.bottom)
         }
         
         self.contentView.backgroundColor = .white

@@ -77,6 +77,9 @@ class HomeViewController: UIViewController {
         tableView.backgroundColor = .clear
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.estimatedRowHeight = 200
+        tableView.rowHeight = UITableViewAutomaticDimension
         self.view.addSubview(tableView!)
         
         // Add constraints to the table and align it to the center of the view.
