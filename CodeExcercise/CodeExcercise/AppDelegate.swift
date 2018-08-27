@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Make the controller visible on the window.
         window!.makeKeyAndVisible()
         
-        // Testing a new push 6
+        // Testing a new push 7
         
         return true
     }
