@@ -226,7 +226,6 @@
 				C17B39CF2030D0DC006246C6 /* Frameworks */,
 				C17B39D02030D0DC006246C6 /* Resources */,
 				FCE59D1CB89E73296640BCCA /* [CP] Embed Pods Frameworks */,
-				52D496E4A6E5BB038BD8E374 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -245,8 +244,6 @@
 				C17B39E22030D0DC006246C6 /* Sources */,
 				C17B39E32030D0DC006246C6 /* Frameworks */,
 				C17B39E42030D0DC006246C6 /* Resources */,
-				A4BEF5BD8CB71A3E97C97783 /* [CP] Embed Pods Frameworks */,
-				52965BA4BA434D33161D9056 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -266,8 +263,6 @@
 				C17B39ED2030D0DC006246C6 /* Sources */,
 				C17B39EE2030D0DC006246C6 /* Frameworks */,
 				C17B39EF2030D0DC006246C6 /* Resources */,
-				2A3543B7B07E870968C4F3E4 /* [CP] Embed Pods Frameworks */,
-				74A5B0822150F98A7FA87410 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -291,7 +286,7 @@
 				TargetAttributes = {
 					C17B39D12030D0DC006246C6 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					C17B39E52030D0DC006246C6 = {
 						CreatedOnToolsVersion = 9.2;
@@ -352,51 +347,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2A3543B7B07E870968C4F3E4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CodeExcerciseUITests/Pods-CodeExcerciseUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		52965BA4BA434D33161D9056 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CodeExcerciseTests/Pods-CodeExcerciseTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		52D496E4A6E5BB038BD8E374 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CodeExcercise/Pods-CodeExcercise-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6A14A745AABAD42CE2FCFFF5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -415,21 +365,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		74A5B0822150F98A7FA87410 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CodeExcerciseUITests/Pods-CodeExcerciseUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		8714FBDB8DAA89B51558D1B3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -446,21 +381,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A4BEF5BD8CB71A3E97C97783 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CodeExcerciseTests/Pods-CodeExcerciseTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E18EF9909352196BF6D3BA50 /* [CP] Check Pods Manifest.lock */ = {
@@ -684,15 +604,19 @@
 			baseConfigurationReference = 4215DD170938E5AE70A92991 /* Pods-CodeExcercise.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = E4836R5N49;
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1.0;
+				DEVELOPMENT_TEAM = 6QTVP9MP3C;
 				INFOPLIST_FILE = CodeExcercise/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.com.CodeExcercise;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fab.PersonalBanking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "43ba0106-5878-49e1-9fea-3df798dcca2b";
+				PROVISIONING_PROFILE_SPECIFIER = ios_pb_dev;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -701,15 +625,20 @@
 			baseConfigurationReference = 6CC9C95766D24140EC037B99 /* Pods-CodeExcercise.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = E4836R5N49;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1.0;
+				DEVELOPMENT_TEAM = 6QTVP9MP3C;
 				INFOPLIST_FILE = CodeExcercise/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.com.CodeExcercise;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fab.PersonalBanking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "afe73588-5448-4ed1-b344-a5d5beebbbd7";
+				PROVISIONING_PROFILE_SPECIFIER = FABDistributionPP;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
